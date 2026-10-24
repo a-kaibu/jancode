@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jancode"
+dynamic = ["version"]
+description = "Validate, encode and render JAN (EAN-8 / EAN-13) barcodes as SVG"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "kota", email = "52403688+yashikota@users.noreply.github.com" }]
+requires-python = ">=3.9"
+dependencies = []
+keywords = ["jancode", "ean", "barcode", "svg"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.urls]
+Homepage = "https://github.com/yashikota/jancode"
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "mypy"]
+
+[tool.setuptools]
+packages = ["jancode"]
+
+[tool.setuptools.dynamic]
+version = { attr = "jancode.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]
+
+[tool.mypy]
+strict = true
+files = ["jancode"]
