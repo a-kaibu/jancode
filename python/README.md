@@ -59,9 +59,12 @@ Path("img/4933032010579.svg").write_text(jancode.to_svg("4933032010579"), encodi
 
 ## Development
 
+Uses [uv](https://docs.astral.sh/uv/).
+
 ```sh
-pip install -e ".[dev]"
-pytest
-ruff check .
-mypy
+uv sync
+uv run pytest
+uv run ruff check .
+uv run mypy
+uv build
 ```

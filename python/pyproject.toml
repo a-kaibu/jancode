@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=61"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.11,<0.12"]
+build-backend = "uv_build"
 
 [project]
 name = "jancode"
-dynamic = ["version"]
+version = "2.0.0"
 description = "Validate, encode and render JAN (EAN-8 / EAN-13) barcodes as SVG"
 readme = "README.md"
 license = { text = "MIT" }
@@ -21,14 +21,11 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/yashikota/jancode"
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = ["pytest", "ruff", "mypy"]
 
-[tool.setuptools]
-packages = ["jancode"]
-
-[tool.setuptools.dynamic]
-version = { attr = "jancode.__version__" }
+[tool.uv.build-backend]
+module-root = ""
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
